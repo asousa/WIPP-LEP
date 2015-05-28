@@ -1,0 +1,7 @@
+#!/bin/bash
+ls -lash
+pwd
+
+cd $targDir
+./$A0 $A1 $A2 $A3 $A4 $A5 $A6
+#./$readOne ${freqs[$i]} ${freqs[$ii]} $centerLat $divLatNum $freqStep $L

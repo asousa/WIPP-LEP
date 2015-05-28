@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# --------------------------------------------------------------
+# rayMaker_par.pbs
+# Austin Sousa - 5/2015
+#
+# 	A bash script to run the raymaker and damping functions
+# 	at a single frequency. Moves the fresh file up a directory
+# 	and cleans up after itself.
+# --------------------------------------------------------------
+
+#ls -lash
+#pwd
+
+# A0 = rayMaker
+# A1 = freq
+# A2 = numRays
+# A3 = centerLat
+# A4 = deltLow
+# A5 = deltHigh
+# A6 = dur
+# A7 = latSpread
+
+freq=$A1
+
+cd $workingDir
+./../$A0 $A1 $A2 $A3 $A4 $A5 $A6 $A7
+#./$rayMaker $freq $numRays $centerLat $deltLow $deltHigh $dur $latSpread
+./../newray 
+mv newray.dat newray${freq}.dat
+# rm -f Lprofile.dat latprofile.dat newray.in newray.out 
+./../damping $freq newray${freq}.dat 1
+
+# Move the final file up to root dir
+mv newray${freq}.dat ../
+mv d${freq}.dat ../
+#cp log_raymaker.txt ../log_ray_${freq}.txt
+
+cd ..
+rm -r $workingDir
