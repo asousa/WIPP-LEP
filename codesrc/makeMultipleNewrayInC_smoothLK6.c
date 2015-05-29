@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+#include "consts.h"
 
 
 
@@ -39,7 +39,7 @@
 // Defines:
 // --------
 
-#define		RANGE		10
+//#define		RANGE		10
 
 
 
@@ -73,9 +73,8 @@ int main(int argc, char *argv[] )
   double LAT_SPREAD;
 
 
-  
   if(argc != 8) {
-    printf("Wrong number of arguments!\n");
+    printf("Wrong number of arguments! (raymaker)\n");
     exit(0);
   }
 
@@ -362,6 +361,8 @@ int main(int argc, char *argv[] )
   // DEF, like a recovery region.
   SIDEDU	= 1;
 
+  
+ // ------ Commenting out ducts, 5/27/2015 - aps -------
   // DUCT 1
   fprintf(filePtr, "%g %g %g %g %g %g %g %g %g %g %g %g \n",
 	  L0,  DEF,  DD,  RDUCLN,  HDUCLN,  
@@ -438,7 +439,7 @@ int main(int argc, char *argv[] )
     LATITU = start_lat + i*lat_incr ;
 
     // Wavenormal angle wrt local zenith
-    DELT_offset = ( rand()/((double)RAND_MAX)- 0.5 )*RANGE;
+    //DELT_offset = ( rand()/((double)RAND_MAX)- 0.5 )*RANGE;
     DELT	= delt_low + i*delta_incr;
 
     // Wavenormal angle wrt local B-field.  This value ignored 

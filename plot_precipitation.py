@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 #---------- Find which files we have to work with: ------------
 
-dataDir = 'Out_45deg';
+dataDir = 'outshort_45';
 
 phi_files = glob.glob(dataDir + '/phi_*')
 f = [f.split('/phi_')[-1] for f in phi_files]
@@ -90,7 +90,7 @@ H = int(np.floor(np.sqrt(L_vec.size)))
 W = int(np.ceil(np.sqrt(L_vec.size)))
 print("H, W: ",H,W)
 fig, axvec = plt.subplots(W,H, sharex=True, sharey=True)
-print(np.shape(axvec))
+#print(np.shape(axvec))
 axvec = axvec.reshape(W*H,1)
 #axvec = axvec(:)
 for idx, L in enumerate(L_vec):
@@ -101,7 +101,7 @@ for idx, L in enumerate(L_vec):
     im.set_clim(-4, 0)
     sp.invert_yaxis()
     sp.set_title(L)
-    print(sp.get_xticklabels())
+    #print(sp.get_xticklabels())
     #plt.yticks(E_scaled)
     plt.setp(sp.get_xticklabels(), visible=False)
     plt.setp(sp.get_yticklabels(), visible=False)

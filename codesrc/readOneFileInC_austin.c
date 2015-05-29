@@ -3,6 +3,7 @@
 #include "time.h"
 #include <unistd.h>
 # include <stdlib.h>
+# include "consts.h"
 
 
 
@@ -29,60 +30,56 @@ int		NUM_TARGS	=	1;
 
 
 
-
-
-
-
 // Definitions:
 //-------------
 
-#define		PI		3.141592653589793115997963468544185161590576
-#define		D2R		PI/180.0
-#define		R2D		180.0/PI
+// #define		PI		3.141592653589793115997963468544185161590576
+// #define		D2R		PI/180.0
+// #define		R2D		180.0/PI
 
-#define		NUM_STEPS	15000
-#define		T_STEP		0.0004
+// #define		NUM_STEPS	15000
+// #define		T_STEP		0.0004
 
-#define		Q_EL		1.602E-19
-#define		M_EL		9.1E-31
-#define		E_EL		5.105396765648739E5
-#define		MU0		PI*4E-7		
-#define		EPS0		8.854E-12
-#define		C		2.997956376932163e+08
-#define		Z0		377.0
-#define		R_E		6370000.0
-#define		H_MAGNETO	1E6
-#define		H_IONO		1E5
+// #define		Q_EL		1.602E-19
+// #define		M_EL		9.1E-31
+// #define		E_EL		5.105396765648739E5
+// #define		MU0		PI*4E-7		
+// #define		EPS0		8.854E-12
+// #define		C		2.997956376932163e+08
+// #define		Z0		377.0
+// #define		R_E		6370000.0
+// #define		H_MAGNETO	1E6
+// #define		H_IONO		1E5
 
-#define		A		5E3	
-#define		B		1E5
-#define		H_E		5000.0
-#define		I0		-100000.0
-// peak current defined here, in Amps!
+// #define		A		5E3	
+// #define		B		1E5
+// #define		H_E		5000.0
+// #define		I0		-100000.0
+// // peak current defined here, in Amps!
 
-#define		P_DIST		0.0
-#define		Q_DIST		2.0
-#define		AN_CM_DIST	2E5
-#define		V0_DIST		1.0
-#define		M_RES		0
+// #define		P_DIST		0.0
+// #define		Q_DIST		2.0
+// #define		AN_CM_DIST	2E5
+// #define		V0_DIST		1.0
+// #define		M_RES		0
 
-#define		EALimS		-40.0
-#define		EALimN		40.0
-#define		EAIncr		1.0
-#define		dL0		6E-4
-#define		DF		50.0
-#define		DT		0.01
-#define		NUMLATS		((EALimN - EALimS)/EAIncr + 1)
+// #define		EALimS		-40.0
+// #define		EALimN		40.0
+// #define		EAIncr		1.0
+// #define		dL0		6E-4
+// #define		DF		50.0
+// #define		DT		0.01
+// #define		NUMLATS		((EALimN - EALimS)/EAIncr + 1)
 
-// #define		DV_TOT		1e5
-#define		DE_EXP		0.003
-#define		E_EXP_BOT	1.477
-#define		E_EXP_TOP	7.477	
-#define		RES_DT		0.02
-#define		RES_FINT	5.0
-#define		EA_SPLIT	1
-#define		MULT		2.0
-#define		NUM_E		2200
+// // #define		DV_TOT		1e5
+// #define		DE_EXP		0.003
+// #define		E_EXP_BOT	1.477
+// #define		E_EXP_TOP	7.477	
+// #define		RES_DT		0.02
+// #define		RES_FINT	5.0
+// #define		EA_SPLIT	1
+// #define		MULT		2.0
+// #define		NUM_E		2200
 
 
 
@@ -2025,7 +2022,9 @@ void calcRes(cellT *lat_arr[][NUM_TARGS], long lower_freq)
       next = next->link;
     }  // while loop
   }  // for i
-  printf("\nL= %g precipitation took: %g sec\n",L,difftime(end,start));  
+  //printf("\nL= %g precipitation took: %g sec\n",L,difftime(end,start));  
+  printf("\nL= %g precipitation took: %6.2f sec\n",L,difftime(end,start));  
+
   // Make fwrite work in completely unbuffered mode to avoid errors
   setbuf(resPtrN, NULL);
   setbuf(resPtrS, NULL);

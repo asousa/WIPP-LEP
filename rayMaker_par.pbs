@@ -9,6 +9,17 @@
 # 	and cleans up after itself.
 # --------------------------------------------------------------
 
+# -------------------------------
+# This is the serial code:
+# ./$rayMaker $freq $numRays $centerLat $deltLow $deltHigh $dur $latSpread
+# ./newray
+# mv newray.dat newray${freq}.dat
+# rm -f Lprofile.dat latprofile.dat newray.in newray.out 
+# ./damping $freq newray${freq}.dat 1    
+# -------------------------------
+
+
+
 #ls -lash
 #pwd
 
@@ -23,18 +34,25 @@
 
 freq=$A1
 
-cd $workingDir
-./../$A0 $A1 $A2 $A3 $A4 $A5 $A6 $A7
+cd $workingDir	# Temp directory, per file
+
+# # Copy runfiles ($codeDir = where initial compiled scripts are)
+cp -f $codeDir/$A0 .
+cp -f $codeDir/newray .
+cp -f $codeDir/damping .
+
+# ------- Run raymaker
 #./$rayMaker $freq $numRays $centerLat $deltLow $deltHigh $dur $latSpread
-./../newray 
+./$A0 $A1 $A2 $A3 $A4 $A5 $A6 $A7
+./newray 
 mv newray.dat newray${freq}.dat
-# rm -f Lprofile.dat latprofile.dat newray.in newray.out 
-./../damping $freq newray${freq}.dat 1
+rm -f Lprofile.dat latprofile.dat newray.in newray.out 
+./damping $freq newray${freq}.dat 1
 
 # Move the final file up to root dir
-mv newray${freq}.dat ../
-mv d${freq}.dat ../
+mv newray${freq}.dat $targDir
+mv d${freq}.dat $targDir
 #cp log_raymaker.txt ../log_ray_${freq}.txt
 
-cd ..
-rm -r $workingDir
+cd $targDir
+#rm -r $workingDir

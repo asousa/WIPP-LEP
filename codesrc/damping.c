@@ -3,7 +3,7 @@
 #include "time.h"
 #include <unistd.h>
 #include <stdlib.h> // Added, APS, 5/2015 
-
+#include "consts.h"
 
 
 
@@ -14,36 +14,36 @@ int		GEOM;
 
 
 
-// Definitions:
-//-------------
+// //Definitions:
+// //-------------
 
-#define		PI		3.14159265358979311599796346854418516159
-#define		D2R		PI/180.0
-#define		R2D		180.0/PI
+// #define		PI		3.14159265358979311599796346854418516159
+// #define		D2R		PI/180.0
+// #define		R2D		180.0/PI
 
-#define		NUM_STEPS	15000
-#define		T_STEP		0.0004
+// #define		NUM_STEPS	15000
+// #define		T_STEP		0.0004
 
-#define		Q_EL		1.602E-19
-#define		M_EL		9.1E-31
-#define		MU0		PI*4E-7		
-#define		EPS0		8.854E-12
-#define		C		2.997956376932163e+08
-#define		Z0		377.0
-#define		R_E		6370000.0
-#define		H_MAGNETO	1E6
-#define		H_IONO		1E5
+// #define		Q_EL		1.602E-19
+// #define		M_EL		9.1E-31
+// #define		MU0		PI*4E-7		
+// #define		EPS0		8.854E-12
+// #define		C		2.997956376932163e+08
+// #define		Z0		377.0
+// #define		R_E		6370000.0
+// #define		H_MAGNETO	1E6
+// #define		H_IONO		1E5
 
-#define		A		5E3	
-#define		B		1E5
-#define		H_E		5000.0
-#define		I0		-10530.0
+// #define		A		5E3	
+// #define		B		1E5
+// #define		H_E		5000.0
+// #define		I0		-10530.0
 
-#define		P_DIST		0.0
-#define		Q_DIST		2.0
-#define		AN_CM_DIST	2E5
-#define		V0_DIST		1.0
-#define		M_RES		0
+// #define		P_DIST		0.0
+// #define		Q_DIST		2.0
+// #define		AN_CM_DIST	2E5
+// #define		V0_DIST		1.0
+// #define		M_RES		0
 
 
 
@@ -366,8 +366,8 @@ void damping(rayT *ray, double AN, double v0_sq)
   start = time(NULL);
   twoPPlusOne = 2*P_DIST + 1 ;
   n_steps = 500.0;
-  //v_step = C/n_steps; <- change back to this!
-  v_step = (3.0E8-10.0)/n_steps;
+  v_step = C/n_steps; //<- change back to this!
+  //v_step = (3.0E8-10.0)/n_steps;
 
   w = (ray->f)*2*PI;	// already in Hz
   ray->pwr[0] = 1;

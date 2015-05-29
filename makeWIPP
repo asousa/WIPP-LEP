@@ -10,13 +10,13 @@
 #       runfiles/readOneFileInC \
 #       runfiles/newray
 
-# gcc -o runfiles/calcFluxB codesrc/calcFlux_bob.c -lm
-# gcc -o runfiles/calcFlux codesrc/calcFlux.c -lm
-# gcc -o runfiles/damping codesrc/damping.c -lm
-# gcc -o runfiles/makeMultipleNewrayInC_smoothLK6 codesrc/makeMultipleNewrayInC_smoothLK6.c -lm
-# gcc -o runfiles/readOneFileInC codesrc/readOneFileInC_102903.c -lm
+gcc -o runfiles/calcFluxB codesrc/calcFlux_bob.c -lm
+gcc -o runfiles/calcFlux codesrc/calcFlux.c -lm
+gcc -o runfiles/damping codesrc/damping.c -lm
+gcc -o runfiles/makeMultipleNewrayInC_smoothLK6 codesrc/makeMultipleNewrayInC_smoothLK6.c -lm
+gcc -o runfiles/readOneFileInC codesrc/readOneFileInC_102903.c -lm
 
-# gfortran -fno-automatic -o runfiles/newray codesrc/newray1.8.f
+gfortran -fno-automatic -o runfiles/newray codesrc/newray1.8.f
 
 # Austin's versions:
 gcc -o runfiles/calcFluxA codesrc/calcFlux_austin.c -lm
